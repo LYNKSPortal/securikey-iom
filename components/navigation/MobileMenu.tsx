@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { X, Phone, MapPin, Clock } from 'lucide-react'
@@ -33,18 +34,16 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
     >
       <div className="flex h-full flex-col px-6 py-6">
         <div className="flex items-center justify-between">
-          <Link
-            href="/"
-            onClick={onClose}
-            className="flex items-center gap-3 font-heading font-bold text-white tracking-tight"
-          >
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-red text-white text-base">
-              S
-            </span>
-            <span className="flex flex-col leading-none">
-              <span className="text-xl">SECURIKEY</span>
-              <span className="text-[0.65rem] font-medium tracking-[0.18em] text-grey-400">LOCKSMITHS</span>
-            </span>
+          <Link href="/" onClick={onClose} className="relative flex items-center" aria-label="Securikey home">
+            <div className="relative h-[52px] w-[156px]">
+              <Image
+                src="/light-logo-updated.png"
+                alt="Securikey"
+                fill
+                className="object-contain"
+                sizes="156px"
+              />
+            </div>
           </Link>
           <button
             type="button"
