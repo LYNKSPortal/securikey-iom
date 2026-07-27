@@ -29,7 +29,7 @@ export function Harvey() {
             </div>
             <div className="absolute -bottom-6 -right-6 hidden w-48 rounded-3xl border border-grey-200 bg-white p-6 shadow-soft lg:block">
               <p className="text-3xl font-heading font-bold text-red">Harvey</p>
-              <p className="mt-1 text-sm font-medium text-grey-600">Our sponsored rider</p>
+              <p className="mt-1 text-sm font-medium text-grey-600">Our sponsored Golfer</p>
             </div>
           </motion.div>
 
@@ -49,7 +49,7 @@ export function Harvey() {
               className="mt-8 space-y-5 text-grey-600 leading-relaxed"
             >
               <p>
-                Supporting Harvey is about more than putting a logo on a bike. It is about
+                Supporting Harvey is about more than putting a logo on a golf bag. It is about
                 investing in the people who make the Isle of Man special and celebrating
                 dedication, discipline and the pursuit of excellence.
               </p>
