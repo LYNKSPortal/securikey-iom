@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
@@ -13,14 +14,16 @@ export function Footer() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8 pb-16 border-b border-white/10">
           <div className="lg:col-span-5">
-            <Link href="/" className="flex items-center gap-3 font-heading font-bold text-white tracking-tight">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-red text-white text-base">
-                S
-              </span>
-              <span className="flex flex-col leading-none">
-                <span className="text-xl">SECURIKEY</span>
-                <span className="text-[0.65rem] font-medium tracking-[0.18em] text-grey-400">LOCKSMITHS</span>
-              </span>
+            <Link href="/" className="relative flex items-center" aria-label="Securikey home">
+              <div className="relative h-[52px] w-[156px]">
+                <Image
+                  src="/light-logo-updated.png"
+                  alt="Securikey"
+                  fill
+                  className="object-contain"
+                  sizes="156px"
+                />
+              </div>
             </Link>
             <p className="mt-5 max-w-sm text-grey-400 leading-relaxed">
               The Isle of Man&apos;s trusted locksmith specialists. Professional, reliable and
