@@ -23,7 +23,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Email service is not configured' }, { status: 500 })
     }
 
-    const fromAddress = process.env.RESEND_FROM_EMAIL || 'Securikey Quotes <onboarding@resend.dev>'
+    const fromAddress = process.env.RESEND_FROM_EMAIL || 'Securikey Quotes <quotes@securikey.co.im>'
     const toAddresses = process.env.RESEND_TO_EMAIL
       ? process.env.RESEND_TO_EMAIL.split(',').map((addr) => addr.trim())
       : ['lee@securikey.co.im', 'john@securikey.co.im']
