@@ -89,7 +89,15 @@ npm run lint
 
 ## Environment Variables
 
-None are required to run the project locally. The quote form's API route (`app/api/contact/route.ts`) currently validates submissions and logs them server-side as a placeholder — it does **not** yet send an email. Before going live, integrate an email provider (e.g. Resend, SendGrid, Nodemailer) in that route and add any resulting API keys to a local `.env` file (already excluded via `.gitignore`).
+The quote form's API route (`app/api/contact/route.ts`) sends submissions via [Resend](https://resend.com). Copy `.env.example` to `.env.local` and fill in:
+
+| Variable            | Required | Description                                                                 |
+| ------------------- | -------- | ----------------------------------------------------------------------------- |
+| `RESEND_API_KEY`    | Yes      | Your Resend API key.                                                          |
+| `RESEND_FROM_EMAIL` | No       | Sender identity. Must use a domain verified in Resend, or the sandbox sender `onboarding@resend.dev`. |
+| `RESEND_TO_EMAIL`   | No       | Inbox that receives quote requests. Defaults to `info@securikey.im`.          |
+
+`.env.local` is already excluded via `.gitignore` and must never be committed.
 
 ## Deployment
 
