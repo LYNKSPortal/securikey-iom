@@ -95,7 +95,7 @@ The quote form's API route (`app/api/contact/route.ts`) sends submissions via [R
 | ------------------- | -------- | ----------------------------------------------------------------------------- |
 | `RESEND_API_KEY`    | Yes      | Your Resend API key.                                                          |
 | `RESEND_FROM_EMAIL` | No       | Sender identity. Must use a domain verified in Resend, or the sandbox sender `onboarding@resend.dev`. |
-| `RESEND_TO_EMAIL`   | No       | Inbox that receives quote requests. Defaults to `info@securikey.im`.          |
+| `RESEND_TO_EMAIL`   | No       | Comma-separated inbox(es) that receive quote requests. Defaults to `lee@securikey.co.im,john@securikey.co.im`. |
 
 `.env.local` is already excluded via `.gitignore` and must never be committed.
 

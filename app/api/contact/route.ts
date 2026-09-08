@@ -24,11 +24,13 @@ export async function POST(request: Request) {
     }
 
     const fromAddress = process.env.RESEND_FROM_EMAIL || 'Securikey Quotes <onboarding@resend.dev>'
-    const toAddress = process.env.RESEND_TO_EMAIL || 'info@securikey.im'
+    const toAddresses = process.env.RESEND_TO_EMAIL
+      ? process.env.RESEND_TO_EMAIL.split(',').map((addr) => addr.trim())
+      : ['lee@securikey.co.im', 'john@securikey.co.im']
 
     const { error } = await resend.emails.send({
       from: fromAddress,
-      to: toAddress,
+      to: toAddresses,
       replyTo: data.email || undefined,
       subject: `New quote request — ${data.service}`,
       text: [
@@ -48,6 +50,32 @@ export async function POST(request: Request) {
     if (error) {
       console.error('Failed to send quote request email:', error)
       return NextResponse.json({ error: 'Failed to send email' }, { status: 500 })
+    }
+
+    if (data.email) {
+      const { error: confirmationError } = await resend.emails.send({
+        from: fromAddress,
+        to: data.email,
+        subject: 'We have received your quote request — Securikey',
+        text: [
+          `Hi ${data.name},`,
+          ``,
+          `Thank you for contacting Securikey. Your quote request has been sent to our team and a member of staff will be in touch within 24 hours.`,
+          ``,
+          `Summary of your request:`,
+          `Service: ${data.service}`,
+          `Address: ${data.address}`,
+          ``,
+          `If your matter is urgent, please call us directly on 07624 430262.`,
+          ``,
+          `Kind regards,`,
+          `Securikey`,
+        ].join('\n'),
+      })
+
+      if (confirmationError) {
+        console.error('Failed to send customer confirmation email:', confirmationError)
+      }
     }
 
     return NextResponse.json({ success: true }, { status: 200 })
