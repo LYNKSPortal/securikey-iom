@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Manrope } from 'next/font/google'
 import './globals.css'
-import { Header } from '@/components/navigation/Header'
-import { Footer } from '@/components/sections/Footer'
 import { siteConfig, services, testimonials, serviceAreas, team } from '@/lib/data'
 
 const inter = Inter({
@@ -204,9 +202,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen flex flex-col">
-        <Header />
         <main className="flex-1">{children}</main>
-        <Footer />
       </body>
     </html>
   )
